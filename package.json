@@ -1,0 +1,20 @@
+{
+  "name": "@bchar/mu",
+  "version": "0.0.1",
+  "description": "A model-update library",
+  "author": "Brandon Chartier",
+  "main": "index.js",
+  "license": "MIT",
+  "keywords": [],
+  "scripts": {
+    "test": ""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/abstract-tools/mu.git"
+  },
+  "bugs": {
+    "url": "https://github.com/abstract-tools/mu/issues"
+  },
+  "homepage": "https://github.com/abstract-tools/mu#readme"
+}
