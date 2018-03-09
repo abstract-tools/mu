@@ -32,9 +32,9 @@ const update = {
 ## Store
 A store contains components.
 ```javascript
-const mu = require('@bchar/mu')
+const store = require('@bchar/mu')
 
-const app = mu({
+const app = store({
   todos
 })
 ```
