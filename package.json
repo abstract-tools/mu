@@ -1,13 +1,13 @@
 {
   "name": "@bchar/mu",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "A model-update library",
   "author": "Brandon Chartier",
   "main": "index.js",
   "license": "MIT",
   "keywords": [],
   "scripts": {
-    "test": ""
+    "test": "istanbul cover tape test/**/*.js"
   },
   "repository": {
     "type": "git",
@@ -16,5 +16,9 @@
   "bugs": {
     "url": "https://github.com/abstract-tools/mu/issues"
   },
-  "homepage": "https://github.com/abstract-tools/mu#readme"
+  "homepage": "https://github.com/abstract-tools/mu#readme",
+  "devDependencies": {
+    "istanbul": "0.4.5",
+    "tape": "4.9.0"
+  }
 }

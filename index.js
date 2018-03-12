@@ -6,23 +6,24 @@ const path = ([key, ...keys], obj) => {
   return path(keys, obj[key]);
 };
 
-const mu = modules => {
-  let event = () => {};
+const store = modules => {
+  const events = [];
+  const types = Object.keys(modules);
 
-  const state = Object.keys(modules).reduce((acc, key) => {
-    return Object.assign({}, acc, {
-      [key]: modules[key].state()
+  const state = types.reduce((acc, type) => {
+    return Object.assign(acc, {
+      [type]: modules[type].state()
     });
   }, {});
 
-  const update = Object.keys(modules).reduce((acc, key) => {
-    return Object.assign({}, acc, {
-      [key]: modules[key].update
+  const update = types.reduce((acc, type) => {
+    return Object.assign(acc, {
+      [type]: modules[type].update
     });
   }, {});
 
   const subscribe = f => {
-    event = f;
+    return events.push(f);
   };
 
   return {
@@ -33,14 +34,16 @@ const mu = modules => {
       return path(keys, state);
     },
     update: (type, payload) => {
-      const [key, ...rest] = type.split('/');
-      const diff = path(rest, update[key])(payload)(state[key]);
+      const [key, ...keys] = type.split('/');
+      const diff = path(keys, update[key])(payload)(state[key]);
 
-      event({ type, payload }, state[key], diff);
+      events.forEach(f => {
+        return f({ type, payload }, state[key], diff);
+      });
 
       return Object.assign(state[key], diff);
     }
   };
 };
 
-module.exports = mu;
+module.exports = store;
