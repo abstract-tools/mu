@@ -1,5 +1,6 @@
 # mu
 A model-update library.
+`npm install @bchar/mu`
 
 ## Component
 A component is a piece of state that represents a model.
