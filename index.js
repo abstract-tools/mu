@@ -1,49 +1,66 @@
-const path = ([key, ...keys], obj) => {
-  if (!keys.length || !obj[key]) {
-    return obj[key];
+// Updates can be partially applied, to make referencing the function easier.
+const curry = (n, f, ...args) => {
+  if (n <= 0) {
+    return f(...args)
   }
 
-  return path(keys, obj[key]);
-};
+  return (...rest) => {
+    return curry(n - rest.length, f, ...args, ...rest)
+  }
+}
 
+// Find safely looks for the data you want, returns undefined if not found
+const find = ([key, ...keys], obj) => {
+  if (!keys.length) {
+    return obj[key]
+  }
+
+  if (obj[key] == null) {
+    return undefined
+  }
+
+  return find(keys, obj[key])
+}
+
+// Store returns functions for listening, updating, and viewing the state.
 const store = modules => {
-  const events = [];
-  const types = Object.keys(modules);
+  const event = []
+  const types = Object.keys(modules)
 
   const state = types.reduce((acc, type) => {
     return Object.assign(acc, {
       [type]: modules[type].state()
-    });
-  }, {});
+    })
+  }, {})
 
   const update = types.reduce((acc, type) => {
     return Object.assign(acc, {
       [type]: modules[type].update
-    });
-  }, {});
+    })
+  }, {})
 
   const subscribe = f => {
-    return events.push(f);
-  };
+    return event.push(f)
+  }
 
   return {
     subscribe,
     state: type => {
-      const keys = type.split('/');
+      const keys = type.split('/')
 
-      return path(keys, state);
+      return find(keys, state)
     },
-    update: (type, payload) => {
-      const [key, ...keys] = type.split('/');
-      const diff = path(keys, update[key])(payload)(state[key]);
+    update: curry(2, (type, payload) => {
+      const [key, ...keys] = type.split('/')
+      const diff = find(keys, update[key])(payload)(state[key])
 
-      events.forEach(f => {
-        return f({ type, payload }, state[key], diff);
-      });
+      event.forEach(f => {
+        return f({ type, payload }, state[key], diff)
+      })
 
-      return Object.assign(state[key], diff);
-    }
-  };
-};
+      return Object.assign(state[key], diff)
+    })
+  }
+}
 
-module.exports = store;
+module.exports = store
