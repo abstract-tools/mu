@@ -3,7 +3,7 @@
 A stand-alone model-update library.
 
 [![Build Status](https://travis-ci.org/abstract-tools/mu.svg?branch=master)](https://travis-ci.org/abstract-tools/mu)
-[![npm version](https://badge.fury.io/js/@bchar/mu.svg)](https://badge.fury.io/js/@bchar/mu)
+[![npm version](https://badge.fury.io/js/%40bchar%2Fmu.svg)](https://badge.fury.io/js/%40bchar%2Fmu)
 [![dependencies](https://david-dm.org/abstract-tools/mu.svg)](https://david-dm.org/abstract-tools/mu)
 
 `npm install @bchar/mu`
