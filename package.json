@@ -1,5 +1,5 @@
 {
-  "name": "@bchar/mu",
+  "name": "stora",
   "version": "0.1.1",
   "description": "A model-update library",
   "author": "Brandon Chartier",
@@ -11,12 +11,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/abstract-tools/mu.git"
+    "url": "git+https://github.com/abstract-tools/stora.git"
   },
   "bugs": {
-    "url": "https://github.com/abstract-tools/mu/issues"
+    "url": "https://github.com/abstract-tools/stora/issues"
   },
-  "homepage": "https://github.com/abstract-tools/mu#readme",
+  "homepage": "https://github.com/abstract-tools/stora#readme",
   "devDependencies": {
     "istanbul": "0.4.5",
     "tape": "4.9.0"

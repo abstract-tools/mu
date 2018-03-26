@@ -1,12 +1,12 @@
-# mu
+# stora
 
 A stand-alone model-update library.
 
-[![Build Status](https://travis-ci.org/abstract-tools/mu.svg?branch=master)](https://travis-ci.org/abstract-tools/mu)
-[![npm version](https://badge.fury.io/js/%40bchar%2Fmu.svg)](https://badge.fury.io/js/%40bchar%2Fmu)
-[![dependencies](https://david-dm.org/abstract-tools/mu.svg)](https://david-dm.org/abstract-tools/mu)
+[![Build Status](https://travis-ci.org/abstract-tools/stora.svg?branch=master)](https://travis-ci.org/abstract-tools/stora)
+[![npm version](https://badge.fury.io/js/stora.svg)](https://badge.fury.io/js/stora)
+[![dependencies](https://david-dm.org/abstract-tools/stora.svg)](https://david-dm.org/abstract-tools/stora)
 
-`npm install @bchar/mu`
+`npm install stora`
 
 ## Component
 
@@ -47,7 +47,7 @@ const update = {
 A store contains components.
 
 ```javascript
-const store = require('@bchar/mu')
+const store = require('stora')
 
 const app = store({
   todos
